@@ -1,4 +1,4 @@
-immunoviz
+immunomark
 ===============================
 
 version number: 0.0.1
@@ -7,19 +7,19 @@ author: James Lindsay
 Overview
 --------
 
-This is a desktop visualizaiton tool
+A small desktop application, based on napari, to facilitate the markup of multi-channel immunoflourescence images. 
 
 Installation / Usage
 --------------------
 
 To install use pip:
 
-    $ pip install immunoviz
+    $ pip install immunomark
 
 
 Or clone the repo:
 
-    $ git clone https://github.com/jim-bo/immunoviz.git
+    $ git clone https://github.com/jim-bo/immuno-mark.git
     $ python setup.py install
     
 Contributing
