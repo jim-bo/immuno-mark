@@ -4,7 +4,7 @@ from pickle import UnpicklingError
 import os
 import sys
 
-from viz import viz_img, record_points
+from immunomark.viz import viz_img, record_points
 
 def _load_images(args):
     """ load these images """
@@ -56,9 +56,8 @@ def view_case(args):
     with open(args.img_path, 'wb') as fout:
         pickle.dump(img_set, fout)
 
-# setup the parser
-if __name__ == "__main__":
-    
+def main():
+
     # main parser
     parser = argparse.ArgumentParser(description='Immunoviz')
 
@@ -80,3 +79,8 @@ if __name__ == "__main__":
     # call the function with args
     args = parser.parse_args()
     args.func(args)
+
+# setup the parser
+if __name__ == "__main__":
+    main()
+    

@@ -18,7 +18,7 @@ install_requires = [x.strip() for x in all_reqs if 'git+' not in x]
 dependency_links = [x.strip().replace('git+', '') for x in all_reqs if x.startswith('git+')]
 
 setup(
-    name='immunoviz',
+    name='immunomark',
     version=__version__,
     description='This is a desktop visualizaiton tool',
     long_description=long_description,
@@ -33,6 +33,7 @@ setup(
     ],
     keywords='',
     packages=find_packages(exclude=['docs', 'tests*']),
+    entry_points={"console_scripts": ["immunomark = immunomark.immunomark:main"]},
     include_package_data=True,
     author='James Lindsay',
     install_requires=install_requires,
