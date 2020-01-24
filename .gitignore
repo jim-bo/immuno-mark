@@ -1,3 +1,10 @@
+# pipenv
+Pipfile
+Pipfile.lock
+
+#ide
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

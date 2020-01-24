@@ -1,0 +1,15 @@
+# Dev/Deployment
+sphinx
+sphinx_rtd_theme
+nose
+coverage
+pypi-publisher
+
+# app dependencies
+scikit-image
+pyqt5
+pandas
+h5py
+tables
+vispy
+napari
