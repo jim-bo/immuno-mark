@@ -23,8 +23,8 @@ setup(
     description='This is a desktop visualizaiton tool',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/jim-bo/immunoviz',
-    download_url='https://github.com/jim-bo/immunoviz/tarball/' + __version__,
+    url='https://github.com/jim-bo/immuno-mark',
+    download_url='https://github.com/jim-bo/immuno-mark/tarball/' + __version__,
     license='BSD',
     classifiers=[
       'Development Status :: 3 - Alpha',
