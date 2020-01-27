@@ -29,9 +29,20 @@ def list_cases(args):
     # load images
     img_set = _load_images(args)
 
+    print("==")
+    print()
+    print("already processed?\t\tcommand to view")
+    print()
+
     # print the keys
     for case_id in img_set.keys():
-        print(case_id)
+        key_set = img_set[case_id].keys()
+
+        processed = "no"
+        if 'other_cells' in key_set:
+            processed = "yes"
+
+        print(f"{processed}\t: immunomark view {args.img_path} {case_id}")
 
 
 def view_case(args):

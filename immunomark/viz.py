@@ -5,10 +5,10 @@ import napari
 
 # make the colormaps
 COLORS = [
-    [228, 26, 28],
+    [152, 78, 163],
     [55, 126, 184],
     [77, 175, 74],
-    [152, 78, 163],
+    [228, 26, 28],
     [255, 127, 0],
     [255, 255, 51],
     [255, 255, 255]
@@ -25,10 +25,10 @@ for r, g, b in COLORS:
     CMAPS.append(cmap)
         
 CMAP_NAMES = [
-    "red",
+    "purple",
     "blue",
     "green",
-    "purple",
+    "red",
     "orange",
     "yellow",
     "white"
@@ -69,13 +69,13 @@ def viz_img(img_set, key_base):
             cmap = (cname, cmap)
 
             # customize.
-            if channel == "DAPI":
+            if channel == "DAPI" or channel == "CYTOKERATIN":
 
                 # make dapi only visible
                 visible = True
 
                 # switch to turbo
-                cmap = "turbo"
+                #cmap = "turbo"
 
             # add the layer
             layer = viewer.add_image(channels[channel], name=channel, colormap=cmap, 
