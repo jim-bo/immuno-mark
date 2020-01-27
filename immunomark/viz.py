@@ -34,6 +34,16 @@ CMAP_NAMES = [
     "white"
 ]
 
+CMAP_RULES = {
+    "DAPI": 2,
+    "CYTOKERATIN": 3,
+    "PDL1": 6,
+    "PD1": 5,
+    "FOXP3": 4,
+    "CD8": 0,
+    "AUTOFLUORESCENCE": 1
+}
+
 def viz_img(img_set, key_base):
 
     # setup data for this case
@@ -64,6 +74,11 @@ def viz_img(img_set, key_base):
         # loop over each channel
         for channel, cmap, cname in zip(channels, CMAPS, CMAP_NAMES):
 
+            # chanel setup
+            cidx = CMAP_RULES[channel]
+            cname = CMAP_NAMES[cidx]
+            cmap = CMAPS[cidx]
+
             # parameters.
             visible = False  
             cmap = (cname, cmap)
@@ -73,9 +88,6 @@ def viz_img(img_set, key_base):
 
                 # make dapi only visible
                 visible = True
-
-                # switch to turbo
-                #cmap = "turbo"
 
             # add the layer
             layer = viewer.add_image(channels[channel], name=channel, colormap=cmap, 
@@ -87,10 +99,12 @@ def viz_img(img_set, key_base):
         inform_layer.visible = False
         
         # add empty layer
-        inform_layer = viewer.add_points(other_cells, 
-                                         name="All cells", size=3, face_color="white")
         inform_layer = viewer.add_points(tumor_pdl1pos, 
-                                         name="Tumor PDL1+", size=3, face_color="green")
+                                         name="Tumor PDL1+", size=3, face_color=CMAP_NAMES[CMAP_RULES["PDL1"]])
+        inform_layer = viewer.add_points(other_cells, 
+                                         name="Tumor cells", size=3, face_color=CMAP_NAMES[CMAP_RULES["CYTOKERATIN"]])
+        inform_layer = viewer.add_points(other_cells, 
+                                         name="All cells", size=3, face_color=CMAP_NAMES[CMAP_RULES["DAPI"]])
 
     return viewer
 
@@ -111,12 +125,12 @@ def record_points(viewer, img_set, key_base):
             # save the points.
             img_set[key_base][layer_name] = points
             
-        if layer.name == "Tumor PDL1- cell":
-            save_layer("tumor_pdl1neg", layer, img_set, key_base)
+        if layer.name == "Tumor cells":
+            save_layer("tumor_cells", layer, img_set, key_base)
 
-        elif layer.name == "Tumor PDL1+ cell":
+        elif layer.name == "Tumor PDL1+":
             save_layer("tumor_pdl1pos", layer, img_set, key_base)
             
-        elif layer.name == "Other cells":
-            save_layer("other_cells", layer, img_set, key_base)
+        elif layer.name == "All cells":
+            save_layer("all_cells", layer, img_set, key_base)
             

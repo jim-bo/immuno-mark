@@ -3,6 +3,7 @@ import pickle
 from pickle import UnpicklingError
 import os
 import sys
+import math
 
 from immunomark import viz
 
@@ -31,18 +32,29 @@ def list_cases(args):
 
     print("==")
     print()
-    print("already processed?\t\tcommand to view")
+    print("already processed?\ttps\tcommand to view")
     print()
 
     # print the keys
     for case_id in img_set.keys():
-        key_set = img_set[case_id].keys()
 
+        # check if its processed
+        key_set = img_set[case_id].keys()
         processed = "no"
-        if 'other_cells' in key_set:
+        if 'all_cells' in key_set:
             processed = "yes"
 
-        print(f"{processed}\t: immunomark view {args.img_path} {case_id}")
+        # compute tps if processed
+        tps = "na"
+        if processed == 'yes':
+            all_cells = img_set[case_id]['all_cells'].shape[0]
+            tumor_cells = img_set[case_id]['tumor_cells'].shape[0]
+            tumorpos_cells = img_set[case_id]['tumor_pdl1pos'].shape[0]
+            tps = float(tumorpos_cells) / float(tumor_cells)
+            tps = '%.1f' % (tps * 100)
+        
+
+        print(f"{processed}\t: {tps}%\t: immunomark view {args.img_path} {case_id}")
 
 
 def view_case(args):
