@@ -4,7 +4,7 @@ from pickle import UnpicklingError
 import os
 import sys
 
-from immunomark.viz import viz_img, record_points
+from immunomark import viz
 
 def _load_images(args):
     """ load these images """
@@ -47,10 +47,10 @@ def view_case(args):
         list_cases(args)
 
     # run the visualization (returns viewer object)
-    viewer = viz_img(img_set, args.case_id)
+    viewer = viz.viz_img(img_set, args.case_id)
 
     # record the results into dictionary
-    record_points(viewer, img_set, args.case_id)
+    viz.record_points(viewer, img_set, args.case_id)
 
     # over-write the results
     with open(args.img_path, 'wb') as fout:

@@ -88,11 +88,9 @@ def viz_img(img_set, key_base):
         
         # add empty layer
         inform_layer = viewer.add_points(other_cells, 
-                                         name="Other cells", size=3, face_color="white")
+                                         name="All cells", size=3, face_color="white")
         inform_layer = viewer.add_points(tumor_pdl1pos, 
-                                         name="Tumor PDL1+ cell", size=3, face_color="green")
-        inform_layer = viewer.add_points(tumor_pdl1neg, 
-                                         name="Tumor PDL1- cell", size=3, face_color="red")
+                                         name="Tumor PDL1+", size=3, face_color="green")
 
     return viewer
 

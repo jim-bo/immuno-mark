@@ -33,7 +33,7 @@ setup(
     ],
     keywords='',
     packages=find_packages(exclude=['docs', 'tests*']),
-    entry_points={"console_scripts": ["immunomark = immunomark.immunomark:main"]},
+    entry_points={"console_scripts": ["immunomark = immunomark.mark:main"]},
     include_package_data=True,
     author='James Lindsay',
     install_requires=install_requires,
