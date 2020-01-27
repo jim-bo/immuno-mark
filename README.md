@@ -14,7 +14,7 @@ Installation / Usage
 
 To install use pip:
 
-    $ pip install immunomark
+    $ pip install git+https://github.com/jim-bo/immuno-mark.git
 
 
 Or clone the repo:
